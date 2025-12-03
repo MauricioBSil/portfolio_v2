@@ -1,0 +1,202 @@
+/* CSS para versao com sidebar */
+* {
+            box-sizing: border-box; /* Garante que tamanhos não quebrem */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6; /* Cor de fundo suave para o conteúdo */
+            color: #333;
+            /* IMPORTANTE: Removemos o display: flex daqui para não quebrar a sidebar */
+        }
+
+        /* ================= BARRA LATERAL (ESQUERDA) ================= */
+        .sidebar {
+            position: fixed; /* Fixa na tela */
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 260px;
+            background-color: #1a1a2e; /* Fundo escuro */
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+            overflow-y: auto; /* Permite rolar se a tela for baixa */
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover; /* Corta a imagem para ficar redonda perfeita */
+            border: 4px solid rgba(255,255,255,0.1);
+            margin-bottom: 15px;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Redes Sociais na Sidebar */
+        .social-links {
+            margin-bottom: 30px;
+        }
+        .social-links a {
+            color: #aaa;
+            font-size: 20px;
+            margin: 0 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: #008CBA;
+            transform: scale(1.2);
+        }
+
+        /* Menu de Navegação */
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+        .nav-menu a i {
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        .nav-menu a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            padding-left: 20px; /* Efeitozinho de movimento */
+        }
+
+        /* Botão de Tema */
+        .theme-btn {
+            background: none;
+            border: 1px solid #444;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: auto; /* Empurra para o final da barra */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .theme-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+
+        /* ================= CONTEÚDO PRINCIPAL (DIREITA) ================= */
+        .content {
+            margin-left: 260px; /* O PULO DO GATO: Deixa espaço para a sidebar */
+            padding: 40px 60px;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            max-width: 800px;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .hero-section .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+
+        /* ================= GRID DE PROJETOS ================= */
+        .grid-projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo automático */
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .projeto-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+        .projeto-card:hover {
+            transform: translateY(-5px);
+        }
+        .projeto-img {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd; /* Placeholder cinza caso não tenha imagem */
+            object-fit: cover;
+        }
+        .projeto-info {
+            padding: 20px;
+        }
+        .projeto-info h3 {
+            margin-top: 0;
+        }
+        .btn-ver-mais {
+            display: inline-block;
+            margin-top: 15px;
+            color: #008CBA;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        /* ================= MODO ESCURO ================= */
+        body.modo-escuro {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.modo-escuro .sidebar {
+            border-right: 1px solid #333;
+        }
+        body.modo-escuro .projeto-card {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+        body.modo-escuro .hero-section .subtitle {
+            color: #aaa;
+        }
+
+        /* ================= RESPONSIVIDADE (CELULAR) ================= */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative; /* Deixa de ser fixa */
+                width: 100%; /* Ocupa a tela toda */
+                height: auto;
+            }
+            .content {
+                margin-left: 0; /* Remove a margem lateral */
+                padding: 20px;
+            }
+        }
